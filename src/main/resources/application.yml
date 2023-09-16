@@ -1,3 +1,53 @@
+debug: true
+
+logging:
+  level:
+    root: info
+    org.springframework.security: debug
+
+server:
+  port: 7001
+  servlet:
+    context-path: "/user-service"
+
 spring:
-  profiles:
-    active: local
+  datasource:
+    url: "connection-string"
+    username: "username"
+    password: "password"
+    hikari:
+      minimum-idle: 5
+      maximum-pool-size: 10
+
+  jpa:
+    database: postgresql
+    show-sql: true
+    hibernate:
+      ddl-auto: none
+
+  flyway:
+    enabled: false
+    locations: "classpath:migration"
+
+security:
+  session:
+    policy: stateless
+  crfs:
+    enabled: false
+  cors:
+    enabled: true
+    allowed-origins: "http://localhost"
+    max-age: 1800
+    allowed-methods:
+      - get
+      - post
+      - put
+      - delete
+      - patch
+      - options
+  authentication:
+    by-pass-auth: false
+    public-paths:
+      - url: "/home/get"
+        methods:
+          - GET

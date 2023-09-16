@@ -11,17 +11,22 @@ public class FailureResponse extends BaseResponse {
     super.setSuccess(false);
   }
 
-  public BaseResponse setErrorMessage(Throwable throwable) {
-    super.addPayloadKey("message", throwable.getMessage());
+  public FailureResponse setErrorMessage(Throwable throwable) {
+    super.addPayloadKey("errorMessage", throwable.getMessage());
     return this;
   }
 
-  public BaseResponse setErrorCode(ErrorCodeEnum errorCodeEnum) {
+  public FailureResponse setErrorMessage(String message) {
+    super.addPayloadKey("message", message);
+    return this;
+  }
+
+  public FailureResponse setErrorCode(ErrorCodeEnum errorCodeEnum) {
     super.addPayloadKey("errorCode", errorCodeEnum);
     return this;
   }
 
-  public BaseResponse setErrors(Iterator<Object> objects) {
+  public FailureResponse setErrors(Iterator<Object> objects) {
     super.addPayloadKey("errors", objects);
     return this;
   }

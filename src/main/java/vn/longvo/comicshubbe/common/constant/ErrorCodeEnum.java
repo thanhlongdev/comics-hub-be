@@ -1,7 +1,9 @@
 package vn.longvo.comicshubbe.common.constant;
 
 public enum ErrorCodeEnum {
-
-  VALIDATION_FAILED
+  NEED_AUTHENTICATE,
+  NOT_HAVE_PERMISSION,
+  VALIDATION_FAILED,
+  UNEXPECTED_ERROR,
 
 }
